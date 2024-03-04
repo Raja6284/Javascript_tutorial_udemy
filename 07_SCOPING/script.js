@@ -73,27 +73,81 @@
 //this keyword always point to the object which is calling the method
 //f();
 
-var firstName  = 'Matilda';
-const raja = {
-    year:2003,
-    firstName:'king',
-    calAge: function(){
-        console.log(this);//this will not show the function actually it will show the 'raja' object
-        console.log(2075-this.year);
+// var firstName  = 'Matilda';
+// const raja = {
+//     year:2003,
+//     firstName:'king',
+//     calAge: function(){
+//         console.log(this);//this will not show the function actually it will show the 'raja' object
+//         console.log(2075-this.year);
 
-        const self = this;
-        const isMillenial = function(){
-            console.log(self);
-            console.log(this.year >= 2000 && this.year <= 2005);
-        }
-        isMillenial();
-    },
+//         const self = this;
+//         const isMillenial = function(){
+//             console.log(self);
+//             console.log(this.year >= 2000 && this.year <= 2005);
+//         }
+//         isMillenial();
+//     },
 
-   greet: ()=>{
-    console.log(this);
-    console.log(`hey ${this.firstName}`)},
+//    greet: ()=>{
+//     console.log(this);
+//     console.log(`hey ${this.firstName}`)},
+// };
+
+// raja.greet();//it will print "hey undefined", because an arrow function does not get its `this` keyword
+
+// console.log(this.firstName);
+
+// let age = 30;
+// let oldage = age;
+// age = 56;
+// console.log(age);
+// console.log(oldage);
+
+// const me = {
+//     name : 'Raja',
+//     age : 20,
+// };
+
+// const friend = me;
+// friend.age = 30;
+// console.log('friends:',friend);
+// console.log('me:' , me);
+
+let lastName = 'williams';
+let oldLastName = lastName;
+
+lastName = 'davis';
+console.log(lastName,oldLastName);
+
+const jessica = {
+
+    firstName: 'Jessica',
+    lastName: 'williams',
+    age :27,
 };
 
-raja.greet();//it will print "hey undefined", because an arrow function does not get its `this` keyword
+const marriedJessica = jessica;
+marriedJessica.lastName = 'davis';
 
-console.log(this.firstName);
+console.log('before married:', jessica);
+console.log('after married:',marriedJessica);
+
+//marriedJessica = {};
+
+const jessica2 ={
+    firstName:'Jessica',
+    lastName:'Williams',
+    age:27,
+    family:['alice','bob'],
+};
+
+const jessicaCopy = Object.assign({},jessica2);
+
+jessicaCopy.lastName = 'Davis';
+
+jessicaCopy.family.push('mary');
+jessicaCopy.family.push('john');
+
+console.log('before married:', jessica2);
+console.log('after married:',jessicaCopy);
