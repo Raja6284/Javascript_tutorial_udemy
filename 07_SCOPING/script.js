@@ -36,41 +36,64 @@
 
 //The this keyword practice
 
-console.log(this);//this will show window object
+// console.log(this);//this will show window object
 
-const calAge = function(birthYear){
-    console.log(2070-birthYear);
-    console.log(this);
+// const calAge = function(birthYear){
+//     console.log(2070-birthYear);
+//     console.log(this);
 
-}
-const calcAgeArrow= birthYear=>{
-    console.log(2070-birthYear);
-    console.log(this);//this will show window object
-}
-calAge(2003);
-calcAgeArrow(2005);
+// }
+// const calcAgeArrow= birthYear=>{
+//     console.log(2070-birthYear);
+//     console.log(this);//this will show window object
+// }
+// calAge(2003);
+// calcAgeArrow(2005);
 
 
-const raja = {
-    year:2003,
-    calAge: function(){
-        console.log(this);//this will not show the function actually it will show the 'raja' object
-        console.log(2075-this.year);
-    },
+// const raja = {
+//     year:2003,
+//     calAge: function(){
+//         console.log(this);//this will not show the function actually it will show the 'raja' object
+//         console.log(2075-this.year);
+//     },
 
-}
+// }
 
-raja.calAge(2002);
+// raja.calAge(2002);
 
-const matilda = {
-    year:2022,
-}
+// const matilda = {
+//     year:2022,
+// }
 
-matilda.calAge = raja.calAge;
+// matilda.calAge = raja.calAge;
 
-const f = raja.calAge;
-matilda.calAge();
+// const f = raja.calAge;
+// matilda.calAge();
 //this keyword always point to the object which is calling the method
 //f();
 
+var firstName  = 'Matilda';
+const raja = {
+    year:2003,
+    firstName:'king',
+    calAge: function(){
+        console.log(this);//this will not show the function actually it will show the 'raja' object
+        console.log(2075-this.year);
 
+        const self = this;
+        const isMillenial = function(){
+            console.log(self);
+            console.log(this.year >= 2000 && this.year <= 2005);
+        }
+        isMillenial();
+    },
+
+   greet: ()=>{
+    console.log(this);
+    console.log(`hey ${this.firstName}`)},
+};
+
+raja.greet();//it will print "hey undefined", because an arrow function does not get its `this` keyword
+
+console.log(this.firstName);
