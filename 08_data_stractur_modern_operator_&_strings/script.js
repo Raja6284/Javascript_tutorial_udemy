@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 // const restaurant = {
 //     name: 'Classico Italiano',
@@ -142,6 +142,21 @@
 // console.log(open,close);
 // console.log(o,c);
 
+const weekDays = ['sum','mon','tue','wed','thu','fri','sat'];
+const openingHours={
+    [weekDays[4]]:{
+        open:12,
+        close:22,
+    },
+    [weekDays[3]]:{
+        open:11,
+        close:21,
+    },
+   [weekDays[6]]:{
+        open:0,
+        close:24,
+    }
+};
 
 
 const restaurant = {
@@ -150,22 +165,10 @@ const restaurant = {
     categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
     starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
     mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-
-    openingHours:{
-        thu:{
-            open:12,
-            close:22,
-        },
-        fri:{
-            open:11,
-            close:21,
-        },
-        sat:{
-            open:0,
-            close:24,
-        }
-    },
-
+    //ES6 ENHANCED OBJECT LITERALS
+   // Hours,
+   //openingHours:openingHours,
+    openingHours,
     order: function(starterIndex,mainIndex){
         return [this.starterMenu[starterIndex],this.mainMenu[mainIndex]];
     },
@@ -184,6 +187,37 @@ const restaurant = {
     }
 
 };
+
+//console.log(restaurant);
+
+const days = ['sum','mon','tue','wed','thu','fri','sat'];
+
+for(const day of days){
+    //console.log(day);
+    const open = restaurant.openingHours[day]?.open ?? 'closed';//optional cahining and nullish operator is used is used
+    console.log(`On ${day}, we open at ${open}`);
+}
+
+//METHODS
+console.log(restaurant.order?.(0,1)??'method does not exist');
+console.log(restaurant.orderRisotto?.(0,1)??'method does not exist');
+
+//Arrays
+const users = [{name:'raja',email:'raja@.com',contact:'6284889521'}];
+
+console.log(users[0]?.name??'user array empty');
+//for loop in javascript 
+// const menu = [...restaurant.starterMenu,...restaurant.mainMenu];
+
+// for(const item of menu){
+//     console.log(item);
+// }
+
+// for(const [i,el] of menu.entries()){
+//     console.log(`${i+1}: ${el}`);
+// }
+
+//console.log([...menu.entries()]);
 
 // const rest1 = {
 //     name:'Capri',
@@ -375,37 +409,38 @@ const game = {
     },
   };
   
-  //1.
-  const[players1,players2] = game.players;
-  console.log(players1,players2);
+  //SOLUTION
+//   //1.
+//   const[players1,players2] = game.players;
+//   console.log(players1,players2);
 
-  //2.
-  const[gk,...fieldPlayers] = players1;
-  console.log(gk,fieldPlayers);
+//   //2.
+//   const[gk,...fieldPlayers] = players1;
+//   console.log(gk,fieldPlayers);
 
-  //3.
-  const allPlayers = [...players1,...players2];
-  console.log(allPlayers);
+//   //3.
+//   const allPlayers = [...players1,...players2];
+//   console.log(allPlayers);
 
-  //4.
-  const players1Final = [...players1,'Thiago', 'Coutinho','Perisic'];
-  console.log(players1Final);
+//   //4.
+//   const players1Final = [...players1,'Thiago', 'Coutinho','Perisic'];
+//   console.log(players1Final);
 
-  //5, little bit difficult
-  const {odds:{team1, x:draw,team2}} = game;
-  console.log(team1,draw,team2);
+//   //5, little bit difficult
+//   const {odds:{team1, x:draw,team2}} = game;
+//   console.log(team1,draw,team2);
 
-  //6
-  const printGoals = function(...players){
-    console.log(players);
-    console.log(`${players.length} goals were made`);
-  }
+//   //6
+//   const printGoals = function(...players){
+//     console.log(players);
+//     console.log(`${players.length} goals were made`);
+//   }
 
-  printGoals(...game.scored);
+//   printGoals(...game.scored);
 
-  //7
-  team1<team2 && console.log('team1 is more likely to win');
-  team2<team1 && console.log('team2 is more likely to win');
+//   //7
+//   team1<team2 && console.log('team1 is more likely to win');
+//   team2<team1 && console.log('team2 is more likely to win');
 
 
 
