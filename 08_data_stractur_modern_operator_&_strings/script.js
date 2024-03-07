@@ -188,50 +188,81 @@ const restaurant = {
 
 };
 
+
+//SET
+const orderSet = new Set([
+    'pasta','pizza','pizza','risotto','pasta','pasta'
+]);
+
+console.log(orderSet);
+
+console.log(new Set('raja'));
+console.log(orderSet.size);
+console.log(orderSet.has('pizza'));
+console.log(orderSet.has('bread'));
+
+orderSet.add('bread');
+orderSet.add('bread');
+orderSet.delete('risotto');
+//orderSet.clear();
+console.log(orderSet);
+//there is no indicies in set
+
+for(const order of orderSet)
+console.log(order);
+//example
+const staff = ['waiter','chef','waiter','manager','chef','waiter'];
+
+const staffUniq = [...new Set(staff)];
+console.log(staffUniq);
+
+console.log(new Set(['waiter','chef','waiter','manager','chef','waiter']).size);
+
+console.log(new Set('slfkslfklslfsf').size);
 //console.log(restaurant);
 
-const days = ['sum','mon','tue','wed','thu','fri','sat'];
+//const days = ['sum','mon','tue','wed','thu','fri','sat'];
 
-for(const day of days){
-    //console.log(day);
-    const open = restaurant.openingHours[day]?.open ?? 'closed';//optional cahining and nullish operator is used is used
-    console.log(`On ${day}, we open at ${open}`);
-}
+// for(const day of days){
+//     //console.log(day);
+//     const open = restaurant.openingHours[day]?.open ?? 'closed';//optional cahining and nullish operator is used is used
+//     console.log(`On ${day}, we open at ${open}`);
+// }
 
 //METHODS
-console.log(restaurant.order?.(0,1)??'method does not exist');
-console.log(restaurant.orderRisotto?.(0,1)??'method does not exist');
+// console.log(restaurant.order?.(0,1)??'method does not exist');
+// console.log(restaurant.orderRisotto?.(0,1)??'method does not exist');
 
 //Arrays
-const users = [{name:'raja',email:'raja@.com',contact:'6284889521'}];
+// const users = [{name:'raja',email:'raja@.com',contact:'6284889521'}];
 
-console.log(users[0]?.name??'user array empty');
+// console.log(users[0]?.name??'user array empty');
 
 
-const properties = Object.keys(openingHours);
-console.log(properties);
+// const properties = Object.keys(openingHours);
+// console.log(properties);
 
-let openStr = `We are open on ${properties.length} days:`;
+// let openStr = `We are open on ${properties.length} days:`;
 
-for(const day of properties){
-    openStr += `${day},`;
-}
+// for(const day of properties){
+//     openStr += `${day},`;
+// }
 
-console.log(openStr);
+// console.log(openStr);
 
-const values = Object.values(openingHours);
-console.log(values);
+// const values = Object.values(openingHours);
+// console.log(values);
 
-const enteries = Object.entries(openingHours);
+// const enteries = Object.entries(openingHours);
 //console.log(enteries);
 
-for(const x of enteries){
-    console.log(x);
-}
+// for(const x of enteries){
+//     console.log(x);
+// }
 
-for(const [key,{open,close}] of enteries){
-    console.log(`On ${key}, we open at ${open} and close at ${close}`);
-}
+// for(const [key,{open,close}] of enteries){
+//     console.log(`On ${key}, we open at ${open} and close at ${close}`);
+// }
 //for loop in javascript 
 // const menu = [...restaurant.starterMenu,...restaurant.mainMenu];
 
@@ -461,27 +492,27 @@ const game = {
   
 //SOLUTION OF CODING CHALLENGE_2
 //1.
-    const goal = game.scored;
-    //console.log(goal);
-    for(const [i,el] of goal.entries()){
-        console.log(`Goal ${i+1} : ${el}`);
-    }
+    // const goal = game.scored;
+    // //console.log(goal);
+    // for(const [i,el] of goal.entries()){
+    //     console.log(`Goal ${i+1} : ${el}`);
+    // }
 
 //2
-    const odds = Object.values(game.odds);
-    let average = 0;
-    for(const odd of Object.values(game.odds)){
-        average += odd;
-    }
-    average/=odds.length;
-    console.log(average);
+    // const odds = Object.values(game.odds);
+    // let average = 0;
+    // for(const odd of Object.values(game.odds)){
+    //     average += odd;
+    // }
+    // average/=odds.length;
+    // console.log(average);
 
 //3-->it was difficult
-    for(const [team,odd] of Object.entries(game.odds)){
-        //console.log(team,odd);
-        const teamStr = team === 'x'?'draw':`victory ${game[team]}`;
-        console.log(`Odd of ${teamStr} ${odd}`)
-    }
+    // for(const [team,odd] of Object.entries(game.odds)){
+    //     //console.log(team,odd);
+    //     const teamStr = team === 'x'?'draw':`victory ${game[team]}`;
+    //     console.log(`Odd of ${teamStr} ${odd}`)
+    // }
     
 //SOLUTION OF CODING CHALLENGE_1
 //   //1.
