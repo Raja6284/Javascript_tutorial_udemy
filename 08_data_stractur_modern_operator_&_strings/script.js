@@ -188,37 +188,104 @@ const restaurant = {
 
 };
 
-
-//SET
-const orderSet = new Set([
-    'pasta','pizza','pizza','risotto','pasta','pasta'
+const question = new Map([
+    ['question','Which is the best programming language?'],
+    [1,'C'],
+    [2,'Java'],
+    [3,'JavaScript'],
+    [4,'Python'],
+    ['correct',3],
+    [true,'correct'],
+    [false,'try again'],
 ]);
 
-console.log(orderSet);
+console.log(question);
+console.log(Object.entries(openingHours));
 
-console.log(new Set('raja'));
-console.log(orderSet.size);
-console.log(orderSet.has('pizza'));
-console.log(orderSet.has('bread'));
+//converting object ot map
+const hoursMap = new Map(Object.entries(openingHours));
 
-orderSet.add('bread');
-orderSet.add('bread');
-orderSet.delete('risotto');
-//orderSet.clear();
-console.log(orderSet);
-//there is no indicies in set
+console.log(hoursMap);
+console.log(question.get('question'));
+for(const [key,value] of question){
+    if(typeof key === 'number'){
+        console.log(`Answer : ${key} : ${value}`);
+    }
+}
+const answer = 3;
+console.log(answer);
+console.log(question.get(question.get('correct')===answer));
 
-for(const order of orderSet)
-console.log(order);
-//example
-const staff = ['waiter','chef','waiter','manager','chef','waiter'];
+//convert a map to an array
+console.log(...question);
+//console.log([question.entries()]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
+//MAP Fundamentals
+// const rest = new Map();
 
-const staffUniq = [...new Set(staff)];
-console.log(staffUniq);
+// rest.set('name','barbeque');
+// rest.set(1,'france');
+// console.log(rest.set(2,'paris'));
 
-console.log(new Set(['waiter','chef','waiter','manager','chef','waiter']).size);
+// console.log()
 
-console.log(new Set('slfkslfklslfsf').size);
+// rest.set( 'categories',['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+// .set('open',11)
+// .set('close',23)
+// .set(true,'we are open')
+// .set(false,'we are closed:')
+
+// console.log(rest);
+// console.log(rest.get('name'));
+// console.log(rest.get(true));
+// console.log(rest.get(1));
+
+// const time = 12;
+// console.log(rest.get(time>rest.get('open') && time<rest.get('close')));
+
+// rest.set(document.querySelector('h1'),'heading');
+// //rest.clear();
+// const arr = [1,2];
+// rest.set(arr,'test');
+// console.log(rest.has('categories'));
+// rest.delete(2);
+// console.log(rest);
+// console.log(rest.size);
+
+// //console.log(rest.get([1,2]));//didnt work
+// console.log(rest.get(arr));
+
+//SET
+// const orderSet = new Set([
+//     'pasta','pizza','pizza','risotto','pasta','pasta'
+// ]);
+
+// console.log(orderSet);
+
+// console.log(new Set('raja'));
+// console.log(orderSet.size);
+// console.log(orderSet.has('pizza'));
+// console.log(orderSet.has('bread'));
+
+// orderSet.add('bread');
+// orderSet.add('bread');
+// orderSet.delete('risotto');
+// //orderSet.clear();
+// console.log(orderSet);
+// //there is no indicies in set
+
+// for(const order of orderSet)
+// console.log(order);
+// //example
+// const staff = ['waiter','chef','waiter','manager','chef','waiter'];
+
+// const staffUniq = [...new Set(staff)];
+// console.log(staffUniq);
+
+// console.log(new Set(['waiter','chef','waiter','manager','chef','waiter']).size);
+
+// console.log(new Set('slfkslfklslfsf').size);
 //console.log(restaurant);
 
 //const days = ['sum','mon','tue','wed','thu','fri','sat'];
