@@ -92,6 +92,22 @@ const calcDisplayBalance = function(movements){
 }
 calcDisplayBalance(account1.movements);
 
+const calcDisplaySummary = function(movements){
+  const incomes = movements.filter(mov=>mov>0).reduce((acc,cur)=>acc+cur,0);  
+  
+  labelSumIn.textContent = `${incomes}E`;
+
+  const out = movements.filter(mov=>mov<0).reduce((acc,cur)=>acc+cur,0);
+  labelSumOut.textContent = `${Math.abs(out)}E`;
+  
+  const interest = movements.filter(mov=>mov>0).map(deposit=>(deposit*1.2)/100).filter((int,i,arr)=>{
+    console.log(int,i,arr);
+    return int >=1;
+  }).reduce((acc,cur)=>acc+cur,0);
+  labelSumInterest.textContent = `${interest}E`;
+}
+calcDisplaySummary(account1.movements);
+
 const createUsernames = function(accs){
   accs.forEach(function(acc){
     acc.username = acc.owner.toLowerCase().split(' ').map(name=>name[0]).join('');
@@ -324,28 +340,35 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 GOOD LUCK 😀
 */
 
-let humanAge = [];
-const calcAverageHumanAge = function(dogAge){
-    humanAge = dogAge.map(function(val){
-        if(val<=2)
-          return 2*val;
-        else 
-          return 16+2*val;
-    });
-};
+// let humanAge = [];
+// const calcAverageHumanAge = function(dogAge){
+//     humanAge = dogAge.map(function(val){
+//         if(val<=2)
+//           return 2*val;
+//         else 
+//           return 16+2*val;
+//     });
+// };
 
-calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
-console.log(humanAge);
+// calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+// console.log(humanAge);
 
-const newDog = humanAge.filter(function(val){
-  return val>=18;
-})
+// const newDog = humanAge.filter(function(val){
+//   return val>=18;
+// })
 
-console.log(newDog);
+// console.log(newDog);
 
-const average = newDog.reduce(function(acc,cur){
-  return acc+cur;
-},0);
-console.log(average/newDog.length);
+// const average = newDog.reduce(function(acc,cur){
+//   return acc+cur;
+// },0);
+// console.log(average/newDog.length);
 
 
+//PIPELINE
+const eurToUsd = 1.1;
+console.log(movements);
+
+const totalDepositUSD = movements.filter(mov=>mov>0).map(mov=>mov*eurToUsd).reduce((acc,mov)=>acc+mov,0);
+
+console.log(totalDepositUSD);
